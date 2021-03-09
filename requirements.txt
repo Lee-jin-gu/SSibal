@@ -1,6 +1,1 @@
-discord.py==0.16.12
-asyncio.py==0.16.12
-datetime.py==0.16.12
-caledar.py==0.16.12
-requests.py==0.16.12
-bs4.py==0.16.12
+git+https://github.com/Rapptz/discord.py
