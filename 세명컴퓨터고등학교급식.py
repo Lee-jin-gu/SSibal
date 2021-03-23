@@ -72,7 +72,7 @@ async def on_message(message):
 
         print(site1)
 
-        embed = discord.Embed(title="이진구급식", description="급식이 없습니다!" if site1 == " " else "", color=0x00ff00)
+        embed = discord.Embed(title="오늘 급식", description="급식이 없습니다!" if site1 == " " else "", color=0x00ff00)
 
         if site1 != " ":
             embed.add_field(name="급식", value=f"{site1}", inline=True)
@@ -117,7 +117,7 @@ async def on_message(message):
 
         print(site1)
 
-        embed = discord.Embed(title="내일이진구급식", description="급식이 없습니다!" if site1 == " " else "", color=0x00ff00)
+        embed = discord.Embed(title="내일급식", description="급식이 없습니다!" if site1 == " " else "", color=0x00ff00)
 
         if site1 != " ":
             embed.add_field(name="내일급식", value=f"{site1}", inline=True)
@@ -162,11 +162,23 @@ async def on_message(message):
 
         print(site1)
 
-        embed = discord.Embed(title="모래이진구급식", description="급식이 없습니다!" if site1 == " " else "", color=0x00ff00)
+        embed = discord.Embed(title="모래급식", description="급식이 없습니다!" if site1 == " " else "", color=0x00ff00)
 
         if site1 != " ":
             embed.add_field(name="모래급식", value=f"{site1}", inline=True)
 
         await message.channel.send(embed=embed)
+    if message.content.startswith("!추천인"):
+        await message.channel.send("추천인해주셔서 감사합니다")
+    if message.content.startswith("!채팅청소"):
+        if message.author.guild_permissions.manage_messages:
+            try:
+                amount = message.content[6:]
+                await message.channel.purge(limit=int(amount))
+                await message.channel.send(f"**{amount}**개의 메시지를 지웠습니다.")
+            except ValueError:
+                await message.channel.send("청소하실 메시지의 **수**를 입력해 주세요.")
+        else:
+            await message.channel.send("권한이 없습니다.")
 
-client.run('token')
+client.run('Token')
