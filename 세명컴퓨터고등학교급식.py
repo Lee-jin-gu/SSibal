@@ -168,8 +168,18 @@ async def on_message(message):
             embed.add_field(name="모래급식", value=f"{site1}", inline=True)
 
         await message.channel.send(embed=embed)
-    if message.content.startswith("!추천인"):
+
+
+
+
+
+    if message.content.startswith("!추천인 @민구"):
         await message.channel.send("추천인해주셔서 감사합니다")
+
+
+
+
+
     if message.content.startswith("!채팅청소"):
         if message.author.guild_permissions.manage_messages:
             try:
@@ -181,4 +191,4 @@ async def on_message(message):
         else:
             await message.channel.send("권한이 없습니다.")
 
-client.run('Token')
+client.run('token')
